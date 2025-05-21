@@ -11,7 +11,7 @@ const DELETE_FACTOR: f64 = 0.1;
 
 fn main() {
     let mut data: Vec<(f32, f32)> = vec![];
-    for i in 10..1500 {
+    for i in 10..150 {
         let average = bench_average_op_time(i);
         data.push((i as f32, average));
         println!(
@@ -21,15 +21,15 @@ fn main() {
             average
         );
     }
-    _ = draw("Op Time", &data);
+    // _ = draw("Op Time", &data);
 
-    let y_avgs = running_averages(&data.iter().map(|p| p.1).collect::<Vec<f32>>());
-    let data = data
-        .iter()
-        .map(|p| p.0)
-        .zip(y_avgs)
-        .collect::<Vec<(f32, f32)>>();
-    _ = draw("Amortized Op Time", &data)
+    // let y_avgs = running_averages(&data.iter().map(|p| p.1).collect::<Vec<f32>>());
+    // let data = data
+    //     .iter()
+    //     .map(|p| p.0)
+    //     .zip(y_avgs)
+    //     .collect::<Vec<(f32, f32)>>();
+    // _ = draw("Amortized Op Time", &data)
 }
 
 fn running_averages(xs: &[f32]) -> Vec<f32> {
